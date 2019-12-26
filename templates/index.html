@@ -7,7 +7,12 @@
 
 <div>
     <h3>
+        {% if user.is_authenticated %}
+        <h1> WELCOME, {{user.first_name}}</h1>
+        <h1><a href="auth/logout">Logout</a></h1>
+        {% else %}
         <a href="auth/">Login or Signup?</a>
+        {% endif %}
     </h3>
 </div>
 {% endblock %}

@@ -8,10 +8,15 @@
     </div>
     <div>
         Enter password : 
-        <input type="password" name="passowrd">
+        <input type="password" name="password">
     </div>
     <div>
     <input type="submit" value = "Login">
     </div>
 </form>
+<div>
+    {% for message in messages %}
+    <p> {{message}}</p>
+    {% endfor %}
+</div>
 {% endblock %}
