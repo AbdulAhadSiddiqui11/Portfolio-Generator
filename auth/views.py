@@ -9,9 +9,7 @@ def index(request):
     return render(request, 'auth.html')
 
 def login(request):
-    print('REQQQQQQQQEEEEEEEEESSSSSSSTTTT     ' ,request.method)
     if request.method == 'POST':
-        print('afjdsfodsijfoaidf oadjfoi;adsjfoai oarfoalshd fodashf vnpoa;slih fawpoelf pao')
         username = request.POST['username']
         password = request.POST['password']
         print(username)

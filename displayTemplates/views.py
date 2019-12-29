@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+def index(request):
+    return render(request, 'templates.html')
+def t1(request):
+    return render(request, 'template1.html')
