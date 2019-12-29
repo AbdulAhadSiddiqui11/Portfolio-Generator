@@ -1,5 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div><h1>Latest portfolio templates!</h1></div>
+<div>
+    <h1>
+        Latest portfolio templates!
+    </h1>
+</div>
+
+{% for template in templates %}
+<hr>
+<div>
+    <img src="{{template.img.url}}" alt="DevFolio-Icon" width = 150>
+</div>
+<div>
+    <form action="preview" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="temp_name" value="{{template.value}}">
+        <input type="submit" name="preview" value="Preview" >
+    </form>
+</div>
+<div>
+    <h2>
+        {{template.name}}
+    </h2>
+    {{template.desc}}
+<hr>
+</div>
+{% endfor %}
 {% endblock %}
