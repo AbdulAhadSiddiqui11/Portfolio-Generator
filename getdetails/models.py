@@ -15,6 +15,7 @@ class UserInfo(models.Model):
     website = models.CharField(max_length=150)
     photo = models.ImageField(upload_to='user_profiles')
     user = models.ForeignKey(User, on_delete = models.CASCADE)
+    template_val = models.CharField(max_length=20)
 
 
 class Experience(models.Model):
