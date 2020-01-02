@@ -35,6 +35,8 @@ class Experience(models.Model):
 
 class School(models.Model):
     school = models.CharField(max_length=100)
+    course = models.CharField(max_length=100)
+    specialization = models.CharField(max_length=100)
     startdate = models.DateField()
     endate = models.DateField()
     desc = models.TextField(blank=True)
