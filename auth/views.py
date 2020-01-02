@@ -19,20 +19,7 @@ def login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'signin.html', {'form' : form})
-    '''if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        print(username)
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            #return render(request, 'success.html/', {'value' : 'Login'})
-            return redirect("/")
-        else :
-            messages.info(request, 'Username or Password Incorrect...')
-            return redirect('login')
-    else :
-        return render(request, 'signin.html')'''
+
 
 def signup(request):
     print(request.method)
