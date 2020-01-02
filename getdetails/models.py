@@ -17,8 +17,8 @@ class UserInfo(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     template_val = models.CharField(max_length=20)
 
-    def __str___(self):
-        return self.fname + self.lname
+    def __str__(self):
+        return self.fname + ' ' + self.lname
 
 
 class Experience(models.Model):
@@ -49,8 +49,8 @@ class Certificate(models.Model):
     org = models.CharField(max_length=100)
     issuedate = models.DateField()
     expiration = models.DateField()
-    cred_id = models.CharField(max_length=100)
-    cred_url = models.CharField(max_length=150)
+    cred_id = models.CharField(max_length=100, blank = True)
+    cred_url = models.CharField(max_length=150, blank = True)
     userinfo = models.ForeignKey(UserInfo, on_delete = models.CASCADE)
 
     def __str__(self):

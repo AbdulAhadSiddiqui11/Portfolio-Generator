@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{value}} Successful!</h1>
+
+{% for event in exp %}
+<h3>{{event}}</h3>
+{% endfor %}
+{% for event in schools %}
+<h2>{{event}}</h2>
+<p><h3>{{event.desc}}</h3></p>
+{% endfor %}
+{% endblock %}
