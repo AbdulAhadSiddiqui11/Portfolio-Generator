@@ -18,7 +18,7 @@ def login(request):
             return redirect("/")
     else:
         form = AuthenticationForm()
-        return render(request, 'signin.html', {'form' : form})
+    return render(request, 'signin.html', {'form' : form})
     '''if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
