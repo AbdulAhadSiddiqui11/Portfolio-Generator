@@ -4,21 +4,7 @@
 <h1> Sign Up </h1>
 <form action="signup" method="POST">
     {% csrf_token %}
-    <div>
-        Username : <input type="text" name="username">
-    </div>
-    <div>
-        First Name : <input type="text" name="firstname">
-    </div>
-    <div>
-        Last name : <input type="text" name="lastname">
-    </div>    
-    <div>
-        Email : <input type="email" name="email">
-    </div>    
-    <div>
-        password : <input type="password" name="password1">
-    </div> 
+    {{ form.as_p }}
     <div>
         <button type="submit"> Register </button>
     </div>
