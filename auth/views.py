@@ -71,7 +71,7 @@ def login(request):
             return redirect("/")
     else:
         form = AuthenticationForm()
-    return render(request, 'signin.html', {'form' : form})
+    return render(request, 'signin.html', {'form' : form, 'value' : 'not-registered'})
 
 
 def signup(request):
@@ -105,7 +105,7 @@ def signup(request):
             print("User Created")
             #return redirect('signin')
             #return render(request, 'signin.html')
-            return render(request, 'success.html',{'value':'Registration'})
+            return render(request, 'signin.html',{'value':'Registration'})
     else:
         return render(request, 'signup.html')
 

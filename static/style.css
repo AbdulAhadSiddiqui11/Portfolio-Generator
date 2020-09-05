@@ -151,6 +151,7 @@ header .overlay {
   background-color: #000000 !important;
 }
 
+
 a.bg-black:hover, a.bg-black:focus,
 button.bg-black:hover,
 button.bg-black:focus {
@@ -178,7 +179,7 @@ a.text-black:hover, a.text-black:focus {
 
 
 .register-photo {
-    background:#f1f7fc;
+    background:#0d0d0d;
     padding:80px 0;
   }
   
@@ -261,5 +262,7 @@ a.text-black:hover, a.text-black:focus {
     opacity:0.9;
     text-decoration:none;
   }
+
+
   
   
