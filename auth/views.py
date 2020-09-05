@@ -75,22 +75,22 @@ def login(request):
 
 
 def signup(request):
-    if request.method == 'POST':
+    '''if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
             return redirect('/')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form' : form})
+    return render(request, 'signup.html', {'form' : form})'''
 
-    '''print(request.method)
+    print(request.method)
     if request.method == 'POST':
         username = request.POST['username']
         firstname = request.POST['firstname']
         lastname = request.POST['lastname']
         email = request.POST['email']
-        password1 = request.POST['password1']
+        password1 = request.POST['password']
         print(username,firstname,lastname,email,password1)
         
         if User.objects.filter(username=username).exists():
@@ -105,9 +105,9 @@ def signup(request):
             print("User Created")
             #return redirect('signin')
             #return render(request, 'signin.html')
-            return render(request, 'success.html', {'value' : ' Registration'})
+            return render(request, 'success.html',{'value':'Registration'})
     else:
-        return render(request, 'signup.html')'''
+        return render(request, 'signup.html')
 
 def logout(request):
     auth.logout(request)
