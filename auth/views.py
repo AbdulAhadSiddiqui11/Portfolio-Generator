@@ -75,16 +75,16 @@ def login(request):
 
 
 def signup(request):
-    '''if request.method == 'POST':
+    if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('/')
+            return render(request, 'signin.html',{'value':'Registration'})
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form' : form})'''
+    return render(request, 'signup.html', {'form' : form})
 
-    print(request.method)
+    '''print(request.method)
     if request.method == 'POST':
         username = request.POST['username']
         firstname = request.POST['firstname']
@@ -107,7 +107,7 @@ def signup(request):
             #return render(request, 'signin.html')
             return render(request, 'signin.html',{'value':'Registration'})
     else:
-        return render(request, 'signup.html')
+        return render(request, 'signup.html')'''
 
 def logout(request):
     auth.logout(request)

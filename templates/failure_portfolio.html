@@ -19,7 +19,7 @@
                 {% if user.is_authenticated %}
                 <li class="nav-item active"><a class="nav-link" href="../portfolio/"><i class="fas fa-user-tie"></i></span> Portfolio</a></li>
                 <li class="nav-item active"><a class="nav-link" href="../templates/"><i class="fas fa-file"></i> Templates</a></li>
-                <li class="nav-item active"><a class="nav-link" href="{% url 'password_change' %}"><i class="fas fa-key"></i></span> Reset Password</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'password_change' %}"><i class="fas fa-key"></i></span> Change Password</a></li>
                 <li class="nav-item active"><a class="nav-link" href="../auth/logout"><i class="fas fa-sign-out-alt"></i></span> Logout</a></li>
 
                 {% else %}
