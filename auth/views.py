@@ -38,6 +38,7 @@ class SignUpForm(UserCreationForm):
     last_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: Last Name',
                                widget=(forms.TextInput(attrs={'class': 'form-control'})))
     email = forms.EmailField(max_length=50, help_text='Required. Inform a valid email address.',
+                            error_messages={'unique': _("A user with that email-address already exists.")},
                              widget=(forms.TextInput(attrs={'class': 'form-control'})))
     password1 = forms.CharField(label=_('Password'),
                                 widget=(forms.PasswordInput(attrs={'class': 'form-control'})),
@@ -52,7 +53,7 @@ class SignUpForm(UserCreationForm):
         error_messages={'unique': _("A user with that username already exists.")},
         widget=forms.TextInput(attrs={'class': 'form-control'})
     )
-
+        
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
@@ -62,13 +63,17 @@ class SignUpForm(UserCreationForm):
 def index(request):
     return render(request, 'auth.html')
 
-def login(request):
+def signin(request):
     if request.method == 'POST':
         form = AuthenticationForm(data = request.POST)
+        print(form.errors)
         if form.is_valid():
             user = form.get_user()
             auth.login(request, user)
             return redirect("/")
+        else:
+            messages.info(request, 'Username or password is incorrect')
+            return redirect('signin')
     else:
         form = AuthenticationForm()
     return render(request, 'signin.html', {'form' : form, 'value' : 'not-registered'})
@@ -77,9 +82,27 @@ def login(request):
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        if form.is_valid():
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        print(username)
+        print(email)
+        if User.objects.filter(username=username).exists():
+            messages.info(request, 'Username not available...')
+            return redirect('signup')
+        elif User.objects.filter(email=email).exists():
+            messages.info(request, 'Email already Registered...')
+            return redirect('signup')
+        elif password1 != password2:
+            messages.info(request, 'Password did not match')
+            return redirect('signup')
+        elif form.is_valid():
             user = form.save()
             return render(request, 'signin.html',{'value':'Registration'})
+        
+            
+            
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form' : form})

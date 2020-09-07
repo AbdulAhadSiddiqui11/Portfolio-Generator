@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 # TODO: Check the date function -> Add present date function
 
 class UserInfo(models.Model):
+
     fname = models.CharField(max_length = 50)
     lname = models.CharField(max_length = 50)
     headline = models.CharField(max_length = 250)

@@ -52,6 +52,14 @@
                 <div class="form-group">
                     <input class="form-control" type="password" name="password" id="password" placeholder="Password">
                 </div>
+
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                    <p class="text-center"> {{message}}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
     
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" style="background-color: #0d0d0d;" type="submit">Login</button>

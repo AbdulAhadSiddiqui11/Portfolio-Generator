@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+
+<nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="background-color: black;">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <a class="navbar-brand mr-auto" href="#"><img src="{% static 'logo.png' %}" width="60px" style="background-color:transparent;"></a> -->
+        <div class="collapse navbar-collapse" id="Navbar">
+            {% if user.is_authenticated %}
+            <span class="text-light font-weight-bold ml-3">WELCOME, {{user.first_name}}</span>
+            {% endif %}
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item active"><a class="nav-link" href="../portfolio"><i class="fas fa-user-tie"></i></span> Portfolio</a></li>
+                <li class="nav-item active"><a class="nav-link" href="../templates"><i class="fas fa-file"></i> Templates</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'password_change' %}"><i class="fas fa-key"></i></span> Change Password</a></li>
+                <li class="nav-item active"><a class="nav-link" href="../auth/logout"><i class="fas fa-sign-out-alt"></i></span> Logout</a></li>
+
+                {% else %}
+                <li class="nav-item active"><a class="nav-link" href="../auth/signin"><i class="fas fa-sign-in-alt"></i></span> Login</a></li>
+                <li class="nav-item active"><a class="nav-link" href="../auth/signup"><i class="fas fa-user-plus"></i> Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<h1>Get details</h1> 
+{% if post %}
+<h2>"{{Post}}"</h2>
+{% endif %}
+
+<form action='addportfolio' method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+
+
+  <section class="contact-section bg-black">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt text-black mb-2"></i>
+                        <h4 class="text-uppercase m-0">Address</h4>
+                        <hr class="my-4" style="border-color: black;" />
+                        <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope text-black mb-2"></i>
+                        <h4 class="text-uppercase m-0">Email</h4>
+                        <hr class="my-4" style="border-color: black;" />
+                        <div class="small text-black-50"><a href="#!">abdulahadsiddiqui11@gmail.com</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt text-black mb-2"></i>
+                        <h4 class="text-uppercase m-0">Phone</h4>
+                        <hr class="my-4" style="border-color: black;"/>
+                        <div class="small text-black-50">+91 10164101198</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social d-flex justify-content-center">
+            <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Portfolio Generator 2020</div></footer>
+{% endblock %}
