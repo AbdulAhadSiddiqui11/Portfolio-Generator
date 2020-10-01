@@ -32,6 +32,8 @@ username_validator = UnicodeUsernameValidator()
             user.save()
         return user'''
 
+# SignUpForm is an inbuilt Django Form used for User Registration
+
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: First Name',
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
