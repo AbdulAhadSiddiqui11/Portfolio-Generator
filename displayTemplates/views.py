@@ -17,9 +17,5 @@ def index(request):
     return render(request, 'templates.html', {'templates': template_list, 'size':size})
 
 @login_required
-def preview(request):
-    if request.method == 'POST' :
-        val = request.POST['temp_name']
-        return render(request, val)
-    else:
-        return redirect('/templates')
+def preview(request, temp_name):
+    return render(request, temp_name)
