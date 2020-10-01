@@ -14,14 +14,19 @@
             {% endif %}
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                <li class="nav-item active"><a class="nav-link" href="../portfolio/"><i class="fas fa-user-tie"></i></span> Portfolio</a></li>
+                <li class="nav-item active"><a class="nav-link" href="../portfolio/"><i
+                            class="fas fa-user-tie"></i></span> Portfolio</a></li>
                 <li class="nav-item active"><a class="nav-link" href="#"><i class="fas fa-file"></i> Templates</a></li>
-                <li class="nav-item active"><a class="nav-link" href="{% url 'password_change' %}"><i class="fas fa-key"></i></span> Change Password</a></li>
-                <li class="nav-item active"><a class="nav-link" href="../auth/logout"><i class="fas fa-sign-out-alt"></i></span> Logout</a></li>
+                <li class="nav-item active"><a class="nav-link" href="{% url 'password_change' %}"><i
+                            class="fas fa-key"></i></span> Change Password</a></li>
+                <li class="nav-item active"><a class="nav-link" href="../auth/logout"><i
+                            class="fas fa-sign-out-alt"></i></span> Logout</a></li>
 
                 {% else %}
-                <li class="nav-item active"><a class="nav-link" href="../auth/signin"><i class="fas fa-sign-in-alt"></i></span> Login</a></li>
-                <li class="nav-item active"><a class="nav-link" href="../auth/signup"><i class="fas fa-user-plus"></i> Register</a></li>
+                <li class="nav-item active"><a class="nav-link" href="../auth/signin"><i
+                            class="fas fa-sign-in-alt"></i></span> Login</a></li>
+                <li class="nav-item active"><a class="nav-link" href="../auth/signup"><i class="fas fa-user-plus"></i>
+                        Register</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -32,7 +37,7 @@
     <div class="container py-5">
         {% for template_list in templates%}
         {% if template_list|length == 3 %}
-        <div class="row d-flex justify-content-between mb-xs-0 mb-md-4"> 
+        <div class="row d-flex justify-content-between mb-xs-0 mb-md-4">
             {% for template in template_list%}
             <div class="card py-4 h-100 col-md-3 mx-4 mb-4">
                 <div class="card-body text-center">
@@ -40,17 +45,18 @@
                     <h4 class="text-uppercase m-0">{{template.name}}</h4>
                     <hr class="my-4" style="border-color: black;" />
                     <div class="small text-black-50">{{template.desc}}</div>
-                    <form action="preview" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="temp_name" value="{{template.value}}">
-                        <div class="small text-black-50"><button type="submit" class="btn btn-primary btn-block" style="background-color: #0d0d0d;"> Preview</button></div>
-                    </form>
+
+                    <a href="{% url 'template' template.value %}">
+                        <div class="small text-black-50"><button type="submit" class="btn btn-primary btn-block"
+                                style="background-color: #0d0d0d;"> Preview</button></div>
+
+                    </a>
                 </div>
             </div>
-            {% endfor %}    
+            {% endfor %}
         </div>
         {% else %}
-        <div class="row mb-xs-0 mb-md-4 d-flex justify-content-between"> 
+        <div class="row mb-xs-0 mb-md-4 d-flex justify-content-between">
             {% for template in template_list%}
             <div class="card py-4 h-100 col-md-3 mx-4 mb-4">
                 <div class="card-body text-center">
@@ -61,11 +67,12 @@
                     <form action="preview" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="temp_name" value="{{template.value}}">
-                        <div class="small text-black-50"><button type="submit" class="btn btn-primary btn-block" style="background-color: #0d0d0d;"> Preview</button></div>
+                        <div class="small text-black-50"><button type="submit" class="btn btn-primary btn-block"
+                                style="background-color: #0d0d0d;"> Preview</button></div>
                     </form>
                 </div>
             </div>
-            {% endfor %}    
+            {% endfor %}
         </div>
         {% endif %}
         {% endfor %}
@@ -100,7 +107,7 @@
                     <div class="card-body text-center">
                         <i class="fas fa-mobile-alt text-black mb-2"></i>
                         <h4 class="text-uppercase m-0">Phone</h4>
-                        <hr class="my-4" style="border-color: black;"/>
+                        <hr class="my-4" style="border-color: black;" />
                         <div class="small text-black-50">+91 10164101198</div>
                     </div>
                 </div>
@@ -114,25 +121,28 @@
     </div>
 </section>
 <!-- Footer-->
-<footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Portfolio Generator 2020</div></footer>
+<footer class="footer bg-black small text-center text-white-50">
+    <div class="container">Copyright © Portfolio Generator 2020</div>
+</footer>
 
 
 {% endblock %}
 
 <div class="d-flex flex-row bd-highlight"></div>
-    <div class="col-md-4 mb-3 mb-md-0">
-        <div class="card py-4 h-100">
-            <div class="card-body text-center">
-                <i class="fas fa-map-marked-alt text-black mb-2"></i>
-                <h4 class="text-uppercase m-0">{{template.name}}</h4>
-                <hr class="my-4" style="border-color: black;" />
-                <div class="small text-black-50">{{template.desc}}</div>
-                <form action="preview" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="temp_name" value="{{template.value}}">
-                    <div class="small text-black-50"><button type="submit" class="btn btn-primary btn-block" style="background-color: #0d0d0d;"> Preview</button></div>
-                </form>
-            </div>
+<div class="col-md-4 mb-3 mb-md-0">
+    <div class="card py-4 h-100">
+        <div class="card-body text-center">
+            <i class="fas fa-map-marked-alt text-black mb-2"></i>
+            <h4 class="text-uppercase m-0">{{template.name}}</h4>
+            <hr class="my-4" style="border-color: black;" />
+            <div class="small text-black-50">{{template.desc}}</div>
+            <form action="preview" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="temp_name" value="{{template.value}}">
+                <div class="small text-black-50"><button type="submit" class="btn btn-primary btn-block"
+                        style="background-color: #0d0d0d;"> Preview</button></div>
+            </form>
         </div>
     </div>
+</div>
 </div>
